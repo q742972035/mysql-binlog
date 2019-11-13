@@ -50,5 +50,20 @@ public class SqlParseTest {
         assertThat(sqlParse.getDababase()).isNull();
         assertThat(sqlParse.getTableName()).isEqualTo("test_alter");
 
+
+        sql = "ALTER TABLE `test_binlog_inno`\n" +
+                "CHANGE COLUMN `name` `name1`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL AFTER `id`,\n" +
+                "CHANGE COLUMN `age` `age1`  varchar(20) NULL DEFAULT NULL AFTER `name1`";
+        sqlParse = new SqlParse(sql);
+
+        assertThat(sqlParse.getDababase()).isNull();
+        assertThat(sqlParse.getTableName()).isEqualTo("test_binlog_inno");
+
+
+        sql = "DROP TABLE `test_binlog_inno`";
+        sqlParse = new SqlParse(sql);
+
+        assertThat(sqlParse.getDababase()).isNull();
+        assertThat(sqlParse.getTableName()).isEqualTo("test_binlog_inno");
     }
 }

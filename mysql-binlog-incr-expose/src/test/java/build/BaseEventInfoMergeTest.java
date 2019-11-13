@@ -1,7 +1,9 @@
 package build;
 
+import com.github.shyiko.mysql.binlog.event.DeleteRowsEventData;
 import com.github.shyiko.mysql.binlog.event.Event;
 import com.github.shyiko.mysql.binlog.event.EventHeaderV4;
+import com.github.shyiko.mysql.binlog.event.TableMapEventData;
 import com.github.shyiko.mysql.binlog.event.deserialization.ChecksumType;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +16,9 @@ import zy.opensource.mysql.binlog.incr.expose.exception.EventInfoCreateException
 import zy.opensource.mysql.binlog.incr.expose.exception.EventMergeException;
 import zy.opensource.mysql.binlog.incr.expose.extension.EventInfoExtension;
 import zy.opensource.mysql.binlog.incr.expose.type.sql.SqlType;
+import zy.opensource.mysql.binlog.incr.expose.utils.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -359,5 +363,34 @@ public class BaseEventInfoMergeTest {
         assertEquals(next.isLastStep(), true);
     }
 
+
+    /**
+     * 测试schema不一样的情况
+     */
+    @Test
+    public void testInsertSchema() throws EventInfoCreateException, EventMergeException, IllegalAccessException {
+        ExposeConfig config = new ExposeConfig();
+        Field schemaField = ReflectionUtils.findField(ExposeConfig.class, "schema");
+        ReflectionUtils.makeAccessible(schemaField);
+        schemaField.set(config,"t_move");
+
+        eventInfoMerge = new BaseEventInfoMerge(config);
+
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new QueryEventDataBuild().setDatabase("t_move1").setSql("BEGIN").build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new TableMapEventDataBuild().setDatabase("t_move1").setTable("t1").build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new DeleteRowsEventDataBuild().build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new XidEventDataBuild().build())));
+
+
+        assertEquals(eventInfoMerge.size(),0);
+        assertEquals(eventInfoMerge.canMerge(),true);
+
+
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new QueryEventDataBuild().setDatabase("t_move").setSql("BEGIN").build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new TableMapEventDataBuild().setDatabase("t_move").setTable("t1").build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new DeleteRowsEventDataBuild().build())));
+        eventInfoMerge.merge(new EventInfo(new Event(new EventHeaderV4Build().build(),new XidEventDataBuild().build())));
+
+    }
 
 }

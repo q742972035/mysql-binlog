@@ -110,10 +110,14 @@ public class TableElementFactory {
                 Object[] objects = new Object[2];
                 objects[0] = before[j];
                 objects[1] = after[j];
-                if (objects[0].getClass() != objects[1].getClass()) {
-                    throw new IllegalStateException(String.format("update 列信息修改前后的class不一致,database[ %s ] tablename[ %s ] columnName[ %s ]", db, tableName, columns.getColumnName()));
+                Class[] classes = new Class[2];
+                if (objects[0] != null) {
+                    classes[0] = objects[0].getClass();
                 }
-                tableElements.add(new TableElement(j + 1, objects[0].getClass(), objects, MysqlType.getByName(columns.getDataType()), columns));
+                if (objects[1] != null) {
+                    classes[1] = objects[1].getClass();
+                }
+                tableElements.add(new TableElement(j + 1, classes, objects, MysqlType.getByName(columns.getDataType()), columns));
             }
             list.add(tableElements);
         }

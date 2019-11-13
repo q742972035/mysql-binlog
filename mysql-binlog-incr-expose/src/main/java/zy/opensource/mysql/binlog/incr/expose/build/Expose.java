@@ -5,8 +5,10 @@ import zy.opensource.mysql.binlog.incr.expose.event.DefaultBinaryLogEventListene
 import zy.opensource.mysql.binlog.incr.expose.event.DefaultConnectionEventListener;
 import zy.opensource.mysql.binlog.incr.expose.event.DefaultFailureEventListener;
 import zy.opensource.mysql.binlog.incr.expose.event.type.FailureType;
+import zy.opensource.mysql.binlog.incr.expose.utils.ReflectionUtils;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 /**
  * 封装了mysql-binlog的总输出
@@ -38,6 +40,16 @@ public class Expose {
     public Expose build(BinaryLogClientBuild build) {
         if (this.client == null) {
             this.client = build.build();
+        }
+
+        try {
+            ReflectionUtils.copyField(build,"hostname",this.exposeConfig,"defaultUrl");
+            ReflectionUtils.copyField(build,"port",this.exposeConfig,"defaultPort");
+            ReflectionUtils.copyField(build,"username",this.exposeConfig,"defaultUserName");
+            ReflectionUtils.copyField(build,"password",this.exposeConfig,"defaultPassword");
+            ReflectionUtils.copyField(build,"schema",this.exposeConfig,"schema");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
         return this;
     }

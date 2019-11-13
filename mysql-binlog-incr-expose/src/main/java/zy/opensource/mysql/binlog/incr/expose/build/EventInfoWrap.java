@@ -57,4 +57,21 @@ public class EventInfoWrap implements Iterable<EventInfoExtension> {
         }
     }
 
+
+    @Override
+    public String toString() {
+        int srcIndex = index;
+        int srcSize = size;
+        index = 0;
+        size = 0;
+        StringBuilder builder = new StringBuilder();
+        while (iterator.hasNext()){
+            EventInfoExtension next = iterator.next();
+            builder.append(next.toString());
+            builder.append("\r\n");
+        }
+        index = srcIndex;
+        size = srcSize;
+        return builder.toString();
+    }
 }

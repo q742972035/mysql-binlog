@@ -8,8 +8,11 @@ import zy.opensource.mysql.binlog.incr.expose.event.ConnectionEventListener;
 import zy.opensource.mysql.binlog.incr.expose.event.EventInfoMergeListener;
 import zy.opensource.mysql.binlog.incr.expose.event.FailureEventListener;
 import zy.opensource.mysql.binlog.incr.expose.filter.EventInfoFilter;
+import zy.opensource.mysql.binlog.incr.expose.filter.SchemaEventInfoFilter;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ExposeConfig {
@@ -18,7 +21,12 @@ public class ExposeConfig {
     /**
      * 添加eventInfo的过滤器
      */
-    private EventInfoFilter eventInfoFilter;
+    private List<EventInfoFilter> eventInfoFilters = new ArrayList<>();
+    {
+        // 过滤schema
+        eventInfoFilters.add(new SchemaEventInfoFilter());
+    }
+
 
     private DataSource dataSource;
 
@@ -99,13 +107,13 @@ public class ExposeConfig {
         return this;
     }
 
-    public ExposeConfig setEventInfoFilter(EventInfoFilter eventInfoFilter) {
-        this.eventInfoFilter = eventInfoFilter;
-        return this;
+    public List<EventInfoFilter> getEventInfoFilter() {
+        return eventInfoFilters;
     }
 
-    public EventInfoFilter getEventInfoFilter() {
-        return eventInfoFilter;
+    public ExposeConfig setEventInfoFilter(EventInfoFilter eventInfoFilter) {
+        this.eventInfoFilters.add(eventInfoFilter);
+        return this;
     }
 
     public ExposeConfig setDataSource(DataSource dataSource) {
@@ -114,6 +122,9 @@ public class ExposeConfig {
     }
 
     public DataSource getDataSource() {
+        if (dataSource==null){
+            dataSource = buildDefaultDataSource();
+        }
         return dataSource;
     }
 
@@ -123,5 +134,26 @@ public class ExposeConfig {
 
     public ErrorCodeStrategy getErrorCodeStrategy() {
         return errorCodeStrategy;
+    }
+
+
+    private String defaultUrl;
+    private int defaultPort =3306;
+    private String defaultUserName;
+    private String defaultPassword;
+    private String schema;
+
+
+    public String getSchema() {
+        return schema;
+    }
+
+    private DataSource buildDefaultDataSource(){
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        druidDataSource.setUrl(String.format("jdbc:mysql://%s:%s/?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Shanghai",defaultUrl, defaultPort));
+        druidDataSource.setUsername(defaultUserName);
+        druidDataSource.setPassword(defaultPassword);
+        return druidDataSource;
     }
 }

@@ -876,4 +876,13 @@ public abstract class ReflectionUtils {
 		boolean matches(Field field);
 	}
 
+
+	public static void copyField(Object src,String srcFieldName,Object target,String targetFieldName) throws IllegalAccessException {
+		Field srcField = findField(src.getClass(), srcFieldName);
+		Field targetField = findField(target.getClass(), targetFieldName);
+		ReflectionUtils.makeAccessible(srcField);
+		ReflectionUtils.makeAccessible(targetField);
+		targetField.set(target,srcField.get(src));
+	}
+
 }

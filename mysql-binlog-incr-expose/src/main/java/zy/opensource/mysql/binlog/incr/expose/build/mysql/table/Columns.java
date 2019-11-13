@@ -62,4 +62,16 @@ public class Columns {
     public void setColumnKey(String columnKey) {
         this.columnKey = columnKey;
     }
+
+    @Override
+    public String toString() {
+        return "Columns{" +
+                "columnName='" + columnName + '\'' +
+                ", columnDefault='" + columnDefault + '\'' +
+                ", isNullable='" + isNullable + '\'' +
+                ", dataType='" + dataType + '\'' +
+                ", columnType='" + columnType + '\'' +
+                ", columnKey='" + columnKey + '\'' +
+                '}';
+    }
 }

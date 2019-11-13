@@ -36,4 +36,15 @@ public class DefaultEventInfoExtension extends AbstractEventInfoExtension {
     public void setEventInfoMerge(BaseEventInfoMerge eventInfoMerge) {
         this.eventInfoMerge = eventInfoMerge;
     }
+
+    @Override
+    public String toString() {
+        return "DefaultEventInfoExtension{" +
+                "stepCount=" + stepCount +
+                ", currentStep=" + currentStep +
+                ", lastStep=" + lastStep +
+                ", firstStep=" + firstStep +
+                ", eventInfo=" + eventInfo +
+                '}';
+    }
 }

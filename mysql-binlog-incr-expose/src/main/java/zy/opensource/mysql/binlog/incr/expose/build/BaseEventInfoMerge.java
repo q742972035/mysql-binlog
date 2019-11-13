@@ -4,6 +4,7 @@ import com.github.shyiko.mysql.binlog.event.*;
 import zy.opensource.mysql.binlog.incr.expose.exception.EventMergeException;
 import zy.opensource.mysql.binlog.incr.expose.filter.EventInfoFilter;
 import zy.opensource.mysql.binlog.incr.expose.type.sql.SqlType;
+import zy.opensource.mysql.binlog.incr.expose.utils.CollectionUtils;
 import zy.opensource.mysql.binlog.incr.expose.utils.EventInfoUtils;
 import zy.opensource.mysql.binlog.incr.expose.utils.ReflectionUtils;
 
@@ -87,19 +88,21 @@ public class BaseEventInfoMerge {
             return false;
         }
         // 过滤eventInfo
-        EventInfoFilter eventInfoFilter = exposeConfig.getEventInfoFilter();
-        if (eventInfoFilter != null) {
-            if (eventInfoFilter.filter(eventInfo)) {
-                return false;
+        List<EventInfoFilter> eventInfoFilters = exposeConfig.getEventInfoFilter();
+        if (!CollectionUtils.isEmpty(eventInfoFilters)){
+            for (EventInfoFilter eventInfoFilter : eventInfoFilters) {
+                if (eventInfoFilter.filter(exposeConfig,eventInfo)){
+                    return false;
+                }
             }
         }
-
-        beforeMerge(eventInfo);
-        eventInfos.add(eventInfo);
-        if (isPreCapping) {
-            isCapping = true;
+        if (beforeMerge(eventInfo)){
+            eventInfos.add(eventInfo);
+            if (isPreCapping) {
+                isCapping = true;
+            }
+            nextPosition = eventInfo.getNextPosition();
         }
-        nextPosition = eventInfo.getNextPosition();
         return true;
     }
 
@@ -154,14 +157,15 @@ public class BaseEventInfoMerge {
 
 
     /**
-     * 合并前处理
+     * 合并前处理,允许合并则返回true
      */
-    private void beforeMerge(EventInfo eventInfo) throws EventMergeException {
+    private boolean beforeMerge(EventInfo eventInfo) throws EventMergeException {
         EventData eventData = eventInfo.getEventData();
         if (sqlTypes.size() == 0) {
             if (EventInfoUtils.isBaseOne(eventData)) {
                 sqlTypes.add(SqlType.BaseInfo.ROTATE);
                 // 如果是DDL 直接封顶
+                return true;
             } else if (EventInfoUtils.verifyDDL(eventData) != null) {
                 sqlTypes.add(RETURN_RESULT.get());
                 usefulSqlTypes.add(RETURN_RESULT.get());
@@ -175,11 +179,12 @@ public class BaseEventInfoMerge {
                 } else if (RETURN_RESULT.get().equals(SqlType.DDL.TRUNCATE)) {
                     beforeMergeForDdlTruncate(eventInfo);
                 }
-
                 isPreCapping = true;
+                return true;
                 // 如果遇到begin开头，这有可能是一个事务
             } else if (EventInfoUtils.verifyDMLBegin(eventData) != null) {
                 sqlTypes.add(SqlType.DML.BEGIN);
+                return true;
             }
         } else {
             int size = sqlTypes.size();
@@ -191,6 +196,7 @@ public class BaseEventInfoMerge {
                         beforeMergeForFormatdDscription(eventInfo);
                         // 进行预封顶
                         isPreCapping = true;
+                        return true;
                     } else {
                         throw new EventMergeException("基础信息的第二次event必须是[ " + SqlType.BASE_FORMATD_ESCRIPTION + " ]");
                     }
@@ -198,6 +204,7 @@ public class BaseEventInfoMerge {
                 if (eventData instanceof TableMapEventData) {
                     sqlTypes.add(SqlType.DML.TABLE_MAP);
                     beforeMergeForDmlTableMap(eventInfo);
+                    return true;
                 }
             } else if (sqlTypes.get(0).equals(SqlType.DML.BEGIN)) {
                 // 插入前，大小如果是偶数，并且当前不是最后，而最后一个sqlType不是TABLE_MAP
@@ -208,23 +215,27 @@ public class BaseEventInfoMerge {
                     // 进行预封顶
                     sqlTypes.add(RETURN_RESULT.get());
                     isPreCapping = true;
-                    return;
+                    return true;
                 }
                 if (eventData instanceof WriteRowsEventData) {
                     sqlTypes.add(SqlType.DML.INSERT);
                     usefulSqlTypes.add(SqlType.DML.INSERT);
                     beforeMergeForDmlInsert(eventInfo);
+                    return true;
                 } else if (eventData instanceof UpdateRowsEventData) {
                     sqlTypes.add(SqlType.DML.UPDATE);
                     usefulSqlTypes.add(SqlType.DML.UPDATE);
                     beforeMergeForDmlUpdate(eventInfo);
+                    return true;
                 } else if (eventData instanceof DeleteRowsEventData) {
                     sqlTypes.add(SqlType.DML.DELETE);
                     usefulSqlTypes.add(SqlType.DML.DELETE);
                     beforeMergeForDmlDelete(eventInfo);
+                    return true;
                 } else if (eventData instanceof TableMapEventData) {
                     sqlTypes.add(SqlType.DML.TABLE_MAP);
                     beforeMergeForDmlTableMap(eventInfo);
+                    return true;
                 } else if (EventInfoUtils.verifyDMLEnd(eventData) != null) {
                     // 进行预封顶
                     sqlTypes.add(RETURN_RESULT.get());
@@ -235,14 +246,14 @@ public class BaseEventInfoMerge {
                     } else if (RETURN_RESULT.get().equals(SqlType.DML.COMMIT)) {
                         beforeMergeForDmlCommit(eventInfo);
                     }
-
-
+                    return true;
                 } else {
                     String format = String.format("格式不正确，插入的第%s个event,只能是[ %s %s %s %s %s %s]", size + 1, SqlType.DML_INSERT, SqlType.DML_UPDATE, SqlType.DML_DELETE, SqlType.DML_TABLE_MAP, SqlType.DML_COMMIT, SqlType.DML_XID);
                     throw new EventMergeException(format);
                 }
             }
         }
+        return false;
     }
 
 

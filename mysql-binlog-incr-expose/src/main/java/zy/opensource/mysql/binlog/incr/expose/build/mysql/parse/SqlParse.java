@@ -27,7 +27,17 @@ public class SqlParse {
             index = lower.indexOf('(');
         } else if (lower.startsWith(BaseConst.ALTER_LOW)) {
             index = lower.indexOf("modify");
+            if (index == -1) {
+                index = lower.indexOf("change");
+            }
+        } else if (lower.startsWith(BaseConst.DROP_LOW)) {
+            int dropTableIndex = lower.indexOf("table");
+            tb = lower.substring(dropTableIndex + 5);
+            tb = tb.trim().replace("`", "");
+            return;
         }
+
+
         if (index > -1) {
             this.sql = this.sql.substring(0, index);
             // 获取table的下标
