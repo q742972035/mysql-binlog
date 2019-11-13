@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.mysql.binlog</groupId>
+    <groupId>com.github.q742972035.mysql.binlog</groupId>
     <artifactId>mysql-binlog-incr-expose</artifactId>
     <version>1.0.0</version>
 
