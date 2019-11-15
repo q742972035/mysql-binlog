@@ -1,14 +1,14 @@
 package type;
 
 import build.*;
+import com.github.q742972035.mysql.binlog.incr.expose.build.EventInfo;
+import com.github.q742972035.mysql.binlog.incr.expose.exception.EventInfoCreateException;
+import com.github.q742972035.mysql.binlog.incr.expose.type.DDLNextPositionCanUseTypeMatch;
+import com.github.q742972035.mysql.binlog.incr.expose.type.DMLNextPositionCanUseTypeMatch;
+import com.github.q742972035.mysql.binlog.incr.expose.type.NextPositionCanUseTypeMatch;
 import com.github.shyiko.mysql.binlog.event.*;
 import com.github.shyiko.mysql.binlog.event.deserialization.ChecksumType;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.build.EventInfo;
-import zy.opensource.mysql.binlog.incr.expose.exception.EventInfoCreateException;
-import zy.opensource.mysql.binlog.incr.expose.type.DDLNextPositionCanUseTypeMatch;
-import zy.opensource.mysql.binlog.incr.expose.type.DMLNextPositionCanUseTypeMatch;
-import zy.opensource.mysql.binlog.incr.expose.type.NextPositionCanUseTypeMatch;
 import print.PrintUtil;
 
 import java.lang.reflect.Constructor;

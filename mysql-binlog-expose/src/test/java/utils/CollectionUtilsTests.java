@@ -16,8 +16,8 @@
 
 package utils;
 
+import com.github.q742972035.mysql.binlog.incr.expose.utils.CollectionUtils;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.utils.CollectionUtils;
 
 import java.util.*;
 

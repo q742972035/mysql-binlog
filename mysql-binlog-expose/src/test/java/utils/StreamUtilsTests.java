@@ -25,10 +25,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 
+import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
-import zy.opensource.mysql.binlog.incr.expose.utils.StreamUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;

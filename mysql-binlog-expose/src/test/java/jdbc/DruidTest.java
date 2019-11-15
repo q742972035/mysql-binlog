@@ -2,10 +2,10 @@ package jdbc;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
 import org.junit.Before;
 import org.junit.Test;
 import utils.BasePropertiesUtils;
-import zy.opensource.mysql.binlog.incr.expose.utils.StreamUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

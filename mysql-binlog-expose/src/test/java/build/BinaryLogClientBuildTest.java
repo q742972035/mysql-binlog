@@ -1,5 +1,6 @@
 package build;
 
+import com.github.q742972035.mysql.binlog.incr.expose.build.BinaryLogClientBuild;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
 import com.github.shyiko.mysql.binlog.event.deserialization.ChecksumType;
@@ -7,7 +8,6 @@ import com.github.shyiko.mysql.binlog.event.deserialization.ColumnType;
 import org.junit.Before;
 import org.junit.Test;
 import print.PrintAppend;
-import zy.opensource.mysql.binlog.incr.expose.build.BinaryLogClientBuild;
 
 import java.io.IOException;
 import java.io.Serializable;

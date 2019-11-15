@@ -16,13 +16,13 @@
 
 package utils;
 
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ClassUtils;
 import org.junit.Before;
 import org.junit.Test;
 import utils.obj.DerivedTestObject;
 import utils.obj.ITestInterface;
 import utils.obj.ITestObject;
 import utils.obj.TestObject;
-import zy.opensource.mysql.binlog.incr.expose.utils.ClassUtils;
 
 import java.io.Externalizable;
 import java.io.Serializable;

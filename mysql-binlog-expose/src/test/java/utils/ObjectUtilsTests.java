@@ -16,9 +16,9 @@
 
 package utils;
 
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ClassUtils;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ObjectUtils;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.utils.ClassUtils;
-import zy.opensource.mysql.binlog.incr.expose.utils.ObjectUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,7 +26,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static zy.opensource.mysql.binlog.incr.expose.utils.ObjectUtils.isEmpty;
+import static com.github.q742972035.mysql.binlog.incr.expose.utils.ObjectUtils.isEmpty;
 
 /**
  * Unit tests for {@link ObjectUtils}.

@@ -1,11 +1,11 @@
 package utils;
 
+import com.github.q742972035.mysql.binlog.incr.expose.util.StopWatch;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ObjectUtils;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ReflectionUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 import utils.obj.TestObject;
-import zy.opensource.mysql.binlog.incr.expose.util.StopWatch;
-import zy.opensource.mysql.binlog.incr.expose.utils.ObjectUtils;
-import zy.opensource.mysql.binlog.incr.expose.utils.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

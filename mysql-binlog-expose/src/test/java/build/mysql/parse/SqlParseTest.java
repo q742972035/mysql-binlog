@@ -1,7 +1,7 @@
 package build.mysql.parse;
 
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.parse.SqlParse;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.parse.SqlParse;
 import static org.assertj.core.api.Assertions.*;
 /**
  * @program: mysql-binlog-incr-expose

@@ -1,9 +1,9 @@
 package build.mysql;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.IndexTable;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.Table;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.TableHelper;
 import org.junit.Test;
 import reactor.obj.Animal;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.table.IndexTable;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.table.Table;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.table.TableHelper;
 
 import static org.assertj.core.api.Assertions.*;
 

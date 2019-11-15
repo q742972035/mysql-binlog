@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.q742972035.mysql.binlog</groupId>
-    <artifactId>mysql-binlog-incr-expose</artifactId>
+    <artifactId>expose</artifactId>
     <version>1.0.0</version>
 
     <description>

@@ -1,22 +1,20 @@
 package build;
 
-import com.github.shyiko.mysql.binlog.event.DeleteRowsEventData;
+import com.github.q742972035.mysql.binlog.incr.expose.build.BaseEventInfoMerge;
+import com.github.q742972035.mysql.binlog.incr.expose.build.EventInfo;
+import com.github.q742972035.mysql.binlog.incr.expose.build.EventInfoWrap;
+import com.github.q742972035.mysql.binlog.incr.expose.build.ExposeConfig;
+import com.github.q742972035.mysql.binlog.incr.expose.cons.BaseConst;
+import com.github.q742972035.mysql.binlog.incr.expose.exception.EventInfoCreateException;
+import com.github.q742972035.mysql.binlog.incr.expose.exception.EventMergeException;
+import com.github.q742972035.mysql.binlog.incr.expose.extension.EventInfoExtension;
+import com.github.q742972035.mysql.binlog.incr.expose.type.sql.SqlType;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.ReflectionUtils;
 import com.github.shyiko.mysql.binlog.event.Event;
 import com.github.shyiko.mysql.binlog.event.EventHeaderV4;
-import com.github.shyiko.mysql.binlog.event.TableMapEventData;
 import com.github.shyiko.mysql.binlog.event.deserialization.ChecksumType;
 import org.junit.Before;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.build.EventInfo;
-import zy.opensource.mysql.binlog.incr.expose.build.BaseEventInfoMerge;
-import zy.opensource.mysql.binlog.incr.expose.build.EventInfoWrap;
-import zy.opensource.mysql.binlog.incr.expose.build.ExposeConfig;
-import zy.opensource.mysql.binlog.incr.expose.cons.BaseConst;
-import zy.opensource.mysql.binlog.incr.expose.exception.EventInfoCreateException;
-import zy.opensource.mysql.binlog.incr.expose.exception.EventMergeException;
-import zy.opensource.mysql.binlog.incr.expose.extension.EventInfoExtension;
-import zy.opensource.mysql.binlog.incr.expose.type.sql.SqlType;
-import zy.opensource.mysql.binlog.incr.expose.utils.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.util.Iterator;

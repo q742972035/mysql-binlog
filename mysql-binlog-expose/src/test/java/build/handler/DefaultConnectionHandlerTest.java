@@ -1,16 +1,16 @@
 package build.handler;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.q742972035.mysql.binlog.incr.expose.build.ExposeConfig;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.hanlder.DefaultConnectionHandler;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.sql.SqlAcquire;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.sql.SqlFormat;
+import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.Columns;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
 import com.mysql.cj.MysqlType;
 import org.junit.Before;
 import org.junit.Test;
 import utils.BasePropertiesUtils;
-import zy.opensource.mysql.binlog.incr.expose.build.ExposeConfig;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.hanlder.DefaultConnectionHandler;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.sql.SqlFormat;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.sql.SqlAcquire;
-import zy.opensource.mysql.binlog.incr.expose.build.mysql.table.Columns;
-import zy.opensource.mysql.binlog.incr.expose.utils.StreamUtils;
 
 import javax.sql.DataSource;
 import java.io.IOException;

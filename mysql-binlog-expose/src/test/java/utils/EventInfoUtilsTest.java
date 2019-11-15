@@ -3,15 +3,15 @@ package utils;
 
 import build.QueryEventDataBuild;
 import build.XidEventDataBuild;
+import com.github.q742972035.mysql.binlog.incr.expose.cons.BaseConst;
+import com.github.q742972035.mysql.binlog.incr.expose.type.sql.SqlType;
+import com.github.q742972035.mysql.binlog.incr.expose.utils.EventInfoUtils;
 import com.github.shyiko.mysql.binlog.event.QueryEventData;
 import com.github.shyiko.mysql.binlog.event.XidEventData;
 import org.junit.Test;
-import zy.opensource.mysql.binlog.incr.expose.cons.BaseConst;
-import zy.opensource.mysql.binlog.incr.expose.type.sql.SqlType;
-import zy.opensource.mysql.binlog.incr.expose.utils.EventInfoUtils;
 
 import static org.assertj.core.api.Assertions.*;
-import static zy.opensource.mysql.binlog.incr.expose.utils.EventInfoUtils.RETURN_RESULT;
+import static com.github.q742972035.mysql.binlog.incr.expose.utils.EventInfoUtils.RETURN_RESULT;
 
 /**
  * @program: mysql-binlog-incr-expose
