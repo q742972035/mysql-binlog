@@ -1,0 +1,5 @@
+CREATE TABLE `InnoDB_create` (
+`id`  int NULL AUTO_INCREMENT ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB

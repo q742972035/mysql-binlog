@@ -1,0 +1,1 @@
+ALTER TABLE `test_alter` MODIFY COLUMN `change`  varchar(11) NULL DEFAULT NULL AFTER `id`, ADD COLUMN `ct`  datetime NULL AFTER `change`;
