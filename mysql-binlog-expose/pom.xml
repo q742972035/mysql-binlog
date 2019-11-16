@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.q742972035.mysql.binlog</groupId>
     <artifactId>expose</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 
 
 
@@ -136,7 +136,7 @@
     <build>
         <plugins>
             <!-- 要生成Javadoc和Source jar文件，您必须配置javadoc和源Maven插件 -->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.2.1</version>
@@ -148,7 +148,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -157,7 +157,7 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
@@ -172,7 +172,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <!--  必须配置GPG插件用于使用以下配置对组件进行签名 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

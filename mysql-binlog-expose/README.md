@@ -6,6 +6,21 @@
 
 ---
 
+## 工程导入
+
+
+```
+<groupId>com.github.q742972035.mysql.binlog</groupId>
+<artifactId>expose</artifactId>
+<version>1.1.0</version>
+```
+**（仓库地址为maven中央仓库）**
+
+---
+## 历史版本
+暂无。
+
+---
 
 
 1. 如何使用
