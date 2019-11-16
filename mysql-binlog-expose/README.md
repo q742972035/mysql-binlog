@@ -10,9 +10,11 @@
 
 
 ```
-<groupId>com.github.q742972035.mysql.binlog</groupId>
-<artifactId>expose</artifactId>
-<version>1.1.0</version>
+<dependency>
+    <groupId>com.github.q742972035.mysql.binlog</groupId>
+    <artifactId>expose</artifactId>
+    <version>1.1.0</version>
+</dependency>
 ```
 **（仓库地址为maven中央仓库）**
 
