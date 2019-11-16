@@ -1,6 +1,6 @@
 package build;
 
-import com.github.q742972035.mysql.binlog.incr.expose.build.BinaryLogClientBuild;
+import com.github.q742972035.mysql.binlog.expose.build.BinaryLogClientBuild;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
 import com.github.shyiko.mysql.binlog.event.deserialization.ChecksumType;

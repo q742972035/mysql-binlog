@@ -364,7 +364,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return as hash code for the given object; typically the value of
+	 * @return as hash code for the given object; typically the value of
 	 * {@code Object#hashCode()}}. If the object is an array,
 	 * this method will delegate to any of the {@code nullSafeHashCode}
 	 * methods for arrays in this class. If the object is {@code null},
@@ -417,7 +417,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( Object[] array) {
@@ -432,7 +432,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( boolean[] array) {
@@ -447,7 +447,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( byte[] array) {
@@ -462,7 +462,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( char[] array) {
@@ -477,7 +477,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( double[] array) {
@@ -492,7 +492,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( float[] array) {
@@ -507,7 +507,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( int[] array) {
@@ -522,7 +522,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( long[] array) {
@@ -537,7 +537,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hash code based on the contents of the specified array.
+	 * @return a hash code based on the contents of the specified array.
 	 * If {@code array} is {@code null}, this method returns 0.
 	 */
 	public static int nullSafeHashCode( short[] array) {
@@ -552,7 +552,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return the same value as {@link Boolean#hashCode(boolean)}}.
+	 * @return the same value as {@link Boolean#hashCode(boolean)}}.
 	 * @deprecated as of Spring Framework 5.0, in favor of the native JDK 8 variant
 	 */
 	@Deprecated
@@ -561,7 +561,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return the same value as {@link Double#hashCode(double)}}.
+	 * @return the same value as {@link Double#hashCode(double)}}.
 	 * @deprecated as of Spring Framework 5.0, in favor of the native JDK 8 variant
 	 */
 	@Deprecated
@@ -570,7 +570,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return the same value as {@link Float#hashCode(float)}}.
+	 * @return the same value as {@link Float#hashCode(float)}}.
 	 * @deprecated as of Spring Framework 5.0, in favor of the native JDK 8 variant
 	 */
 	@Deprecated
@@ -579,7 +579,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return the same value as {@link Long#hashCode(long)}}.
+	 * @return the same value as {@link Long#hashCode(long)}}.
 	 * @deprecated as of Spring Framework 5.0, in favor of the native JDK 8 variant
 	 */
 	@Deprecated
@@ -593,7 +593,7 @@ public abstract class ObjectUtils {
 	//---------------------------------------------------------------------
 
 	/**
-	 * Return a String representation of an object's overall identity.
+	 * @return a String representation of an object's overall identity.
 	 * @param obj the object (may be {@code null})
 	 * @return the object's identity as String representation,
 	 * or an empty String if the object was {@code null}
@@ -606,7 +606,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a hex String form of an object's identity hash code.
+	 * @return a hex String form of an object's identity hash code.
 	 * @param obj the object
 	 * @return the object's identity code in hex notation
 	 */
@@ -615,7 +615,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a content-based String representation if {@code obj} is
+	 * @Return a content-based String representation if {@code obj} is
 	 * not {@code null}; otherwise returns an empty String.
 	 * <p>Differs from {@link #nullSafeToString(Object)} in that it returns
 	 * an empty String rather than "null" for a {@code null} value.
@@ -641,7 +641,7 @@ public abstract class ObjectUtils {
 	}
 
 	/**
-	 * Return a String representation of the specified Object.
+	 * @Return a String representation of the specified Object.
 	 * <p>Builds a String representation of the contents in case of an array.
 	 * Returns a {@code "null"} String if {@code obj} is {@code null}.
 	 * @param obj the object to build a String representation for

@@ -1,8 +1,8 @@
 package utils;
 
-import com.github.q742972035.mysql.binlog.incr.expose.util.StopWatch;
-import com.github.q742972035.mysql.binlog.incr.expose.utils.ObjectUtils;
-import com.github.q742972035.mysql.binlog.incr.expose.utils.ReflectionUtils;
+import com.github.q742972035.mysql.binlog.expose.util.StopWatch;
+import com.github.q742972035.mysql.binlog.expose.utils.ObjectUtils;
+import com.github.q742972035.mysql.binlog.expose.utils.ReflectionUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 import utils.obj.TestObject;

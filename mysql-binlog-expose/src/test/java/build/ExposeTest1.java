@@ -1,10 +1,10 @@
 package build;
 
 
-import com.github.q742972035.mysql.binlog.incr.expose.build.*;
-import com.github.q742972035.mysql.binlog.incr.expose.event.ConnectionEventListener;
-import com.github.q742972035.mysql.binlog.incr.expose.event.EventInfoMergeListener;
-import com.github.q742972035.mysql.binlog.incr.expose.extension.EventInfoExtension;
+import com.github.q742972035.mysql.binlog.expose.build.*;
+import com.github.q742972035.mysql.binlog.expose.event.ConnectionEventListener;
+import com.github.q742972035.mysql.binlog.expose.event.EventInfoMergeListener;
+import com.github.q742972035.mysql.binlog.expose.extension.EventInfoExtension;
 import org.junit.Test;
 
 import java.io.IOException;

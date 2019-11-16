@@ -1,7 +1,7 @@
 package build.mysql;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.IndexTable;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.Table;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.TableHelper;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.IndexTable;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Table;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.TableHelper;
 import org.junit.Test;
 import reactor.obj.Animal;
 

@@ -1,15 +1,15 @@
 package build;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.github.q742972035.mysql.binlog.incr.expose.build.*;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.hanlder.DefaultConnectionHandler;
-import com.github.q742972035.mysql.binlog.incr.expose.event.ConnectionEventListener;
-import com.github.q742972035.mysql.binlog.incr.expose.event.EventInfoMergeListener;
-import com.github.q742972035.mysql.binlog.incr.expose.event.FailureEventListener;
-import com.github.q742972035.mysql.binlog.incr.expose.event.type.FailureType;
-import com.github.q742972035.mysql.binlog.incr.expose.extension.EventInfoExtension;
-import com.github.q742972035.mysql.binlog.incr.expose.type.sql.SqlType;
-import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
+import com.github.q742972035.mysql.binlog.expose.build.*;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConnectionHandler;
+import com.github.q742972035.mysql.binlog.expose.event.ConnectionEventListener;
+import com.github.q742972035.mysql.binlog.expose.event.EventInfoMergeListener;
+import com.github.q742972035.mysql.binlog.expose.event.FailureEventListener;
+import com.github.q742972035.mysql.binlog.expose.event.type.FailureType;
+import com.github.q742972035.mysql.binlog.expose.extension.EventInfoExtension;
+import com.github.q742972035.mysql.binlog.expose.type.sql.SqlType;
+import com.github.q742972035.mysql.binlog.expose.utils.StreamUtils;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.Event;
 import com.mysql.cj.MysqlType;

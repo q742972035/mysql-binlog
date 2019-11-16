@@ -16,7 +16,7 @@
 
 package utils;
 
-import com.github.q742972035.mysql.binlog.incr.expose.utils.ClassUtils;
+import com.github.q742972035.mysql.binlog.expose.utils.ClassUtils;
 import org.junit.Before;
 import org.junit.Test;
 import utils.obj.DerivedTestObject;

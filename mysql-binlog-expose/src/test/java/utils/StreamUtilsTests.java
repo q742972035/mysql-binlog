@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 
-import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
+import com.github.q742972035.mysql.binlog.expose.utils.StreamUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;

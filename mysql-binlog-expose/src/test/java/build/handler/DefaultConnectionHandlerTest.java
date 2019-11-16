@@ -1,12 +1,12 @@
 package build.handler;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.github.q742972035.mysql.binlog.incr.expose.build.ExposeConfig;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.hanlder.DefaultConnectionHandler;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.sql.SqlAcquire;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.sql.SqlFormat;
-import com.github.q742972035.mysql.binlog.incr.expose.build.mysql.table.Columns;
-import com.github.q742972035.mysql.binlog.incr.expose.utils.StreamUtils;
+import com.github.q742972035.mysql.binlog.expose.build.ExposeConfig;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConnectionHandler;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Columns;
+import com.github.q742972035.mysql.binlog.expose.utils.StreamUtils;
 import com.mysql.cj.MysqlType;
 import org.junit.Before;
 import org.junit.Test;
