@@ -8,6 +8,7 @@ import com.github.q742972035.mysql.binlog.expose.build.*;
 import com.github.q742972035.mysql.binlog.expose.build.factory.EventInfoMergeFacotry;
 import com.github.q742972035.mysql.binlog.expose.exception.EventInfoCreateException;
 import com.github.q742972035.mysql.binlog.expose.exception.EventMergeException;
+import com.github.q742972035.mysql.binlog.expose.global.Global;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.Event;
 import org.slf4j.Logger;
@@ -73,8 +74,10 @@ public class DefaultBinaryLogEventListener implements BinaryLogClient.EventListe
             return;
         }
 
-        if (eventInfoMerge.size() == 0) {
-            logger.warn(String.format("发生非法的合并，eventInfo:%s", eventInfo.toString()));
+        if (eventInfoMerge.size() == 0 && Global.CURRENT_DB.get() != null && Global.CURRENT_DB.get().equals(exposeConfig.getSchema())) {
+            if (logger.isWarnEnabled()) {
+                logger.warn(String.format("发生非法的合并，eventInfo:%s", eventInfo.toString()));
+            }
             eventInfoMerge = null;
             return;
         }

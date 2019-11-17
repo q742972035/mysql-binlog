@@ -13,14 +13,20 @@
 <dependency>
     <groupId>com.github.q742972035.mysql.binlog</groupId>
     <artifactId>expose</artifactId>
-    <version>1.1.0</version>
+    <version>0.0.0.1-SNAPSHOTS</version>
 </dependency>
 ```
 **（仓库地址为maven中央仓库）**
 
 ---
 ## 历史版本
-暂无。
+1. 0.0.0.0-SNAPSHOTS > 0.0.0.1-SNAPSHOTS添加的功能
+> Global类添加了2个常量
+```
+    public static final ThreadLocal<Long> CURRENT_POSITION = new ThreadLocal<>();
+    public static final ThreadLocal<Long> NEXT_POSITION = new ThreadLocal<>();
+```
+
 
 ---
 

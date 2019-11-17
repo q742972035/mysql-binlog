@@ -12,6 +12,27 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ExposeTest1 extends AbstractTest {
+    private String hn = "*";
+    private String un = "*";
+    private String pd = "*";
+    private String sc = "*";
+
+
+    @Test
+    public void doTest1() throws IOException, InterruptedException {
+        ExposeConfig config = new ExposeConfig();
+        BinaryLogClientBuild build = new BinaryLogClientBuild();
+        build.setHostname(hn)
+                .setUsername(un)
+                .setPassword(pd)
+                .setSchema(sc);
+        new Expose(config).build(build).connect();
+
+        synchronized (this){
+            wait();
+        }
+    }
+
 
     @Test
     public void doMain() throws InterruptedException, IOException {
@@ -92,10 +113,10 @@ public class ExposeTest1 extends AbstractTest {
 
 
         BinaryLogClientBuild build = new BinaryLogClientBuild();
-        build.setHostname("106.12.138.136")
-                .setUsername("award3")
-                .setPassword("87654321")
-                .setSchema("t_move");
+        build.setHostname(hn)
+                .setUsername(un)
+                .setPassword(pd)
+                .setSchema(sc);
         // 设置binlog文件信息
 //                .setBinlogFilename("mysql-bin.000006")
         // 设置binlog position的位置
