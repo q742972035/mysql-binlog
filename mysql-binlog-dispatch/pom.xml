@@ -31,7 +31,7 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <com.github.q742972035.mysql.binlog.version>0.0.0.1-SNAPSHOTS</com.github.q742972035.mysql.binlog.version>
+        <com.github.q742972035.mysql.binlog.version>0.0.0.2-SNAPSHOTS</com.github.q742972035.mysql.binlog.version>
     </properties>
 
     <dependencies>
@@ -51,42 +51,18 @@
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
             <version>7.1</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.1.1</version>
-            <optional>true</optional>
         </dependency>
 
-        <!--数据库-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.24</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.15</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.0</version>
-            <optional>true</optional>
-        </dependency>
 
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
             <version>2.2</version>
-            <optional>true</optional>
         </dependency>
 
         <!--test-->
@@ -123,7 +99,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>3.2.11.RELEASE</version>
-            <optional>true</optional>
         </dependency>
 
     </dependencies>

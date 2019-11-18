@@ -11,7 +11,7 @@
         </layout>
     </appender>
 
-    <logger name="com.github.q742972035.mysql.binlog.dispath.RunnerDispath" level="debug"></logger>
+    <logger name="com.github.q742972035.mysql.binlog.dispatch.RunnerDispatch" level="debug"></logger>
 
 
     <!-- 日志输出级别 -->
