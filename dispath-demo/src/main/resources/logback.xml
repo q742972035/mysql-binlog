@@ -11,9 +11,6 @@
         </layout>
     </appender>
 
-    <logger name="com.github.q742972035.mysql.binlog.dispatch.RunnerDispatch" level="debug"></logger>
-
-
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="STDOUT" />
