@@ -216,6 +216,7 @@ public void methodname(@CurrentPosition long cp, @NextPosition long np
 binlog日志是通过单线程读取的，如果业务逻辑太繁琐，则阻塞binlog日志的读取速度，因此通过多线程技术，允许将多个表分在不同的线程上各自读取（同一个表的binlog日志先后顺序一致），也就是在a表先insert后update的时候，不会发生a表先update再insert得情况。
 
 原理如下：
+
 ![image](https://github.com/q742972035/mysql-binlog/blob/master/mysql-binlog-dispatch/IMAGES/ReadWriteLinkedListGroup.png?raw=true)
 
 
