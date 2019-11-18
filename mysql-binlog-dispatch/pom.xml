@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.q742972035.mysql.binlog</groupId>
-    <artifactId>dispath</artifactId>
+    <artifactId>dispatch</artifactId>
     <version>${com.github.q742972035.mysql.binlog.version}</version>
 
     <description>
@@ -21,9 +21,9 @@
         </developer>
     </developers>
 
-    <name>mysql-binlog-dispath</name>
+    <name>mysql-binlog-dispatch</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <url>https://github.com/q742972035/mysql-binlog/tree/master/mysql-binlog-dispatch</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

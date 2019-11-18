@@ -1,4 +1,4 @@
-# mysql-binlog-dispath使用手册
+# mysql-binlog-dispatch使用手册
 
 - 前言 （最低JAVA版本为JDK1.8）
 
@@ -12,7 +12,7 @@
 ```
 <dependency>
     <groupId>com.github.q742972035.mysql.binlog</groupId>
-    <artifactId>dispath</artifactId>
+    <artifactId>dispatch</artifactId>
     <version>0.0.0.1-SNAPSHOTS</version>
 </dependency>
 ```
