@@ -4,12 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>mysql-binlog-dispatch</name>
-    <url></url>
+    <url>https://github.com/q742972035/mysql-binlog/tree/master/dispath-demo</url>
 
-    <groupId>com.github.q742972035.dispath.demo</groupId>
+    <groupId>com.github.q742972035.mysql.binlog.dispath.demo</groupId>
     <artifactId>dispath-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
-
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -17,6 +16,60 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <com.github.q742972035.mysql.binlog.version>0.0.0.1-SNAPSHOTS</com.github.q742972035.mysql.binlog.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.q742972035.mysql.binlog</groupId>
+            <artifactId>dispatch</artifactId>
+            <version>0.0.0.2-SNAPSHOTS</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 要生成Javadoc和Source jar文件，您必须配置javadoc和源Maven插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!--  必须配置GPG插件用于使用以下配置对组件进行签名 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+        </plugins>
+    </build>
 </project>
