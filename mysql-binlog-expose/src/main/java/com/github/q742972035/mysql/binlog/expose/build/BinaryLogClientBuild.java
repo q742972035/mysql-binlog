@@ -2,6 +2,7 @@ package com.github.q742972035.mysql.binlog.expose.build;
 
 import com.github.q742972035.mysql.binlog.expose.setter.BinaryLogClientSetter;
 import com.github.q742972035.mysql.binlog.expose.setter.BinaryLogClientSetter;
+import com.github.q742972035.mysql.binlog.expose.utils.StringUtils;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.deserialization.EventDeserializer;
 import com.github.shyiko.mysql.binlog.network.SSLMode;
@@ -44,7 +45,11 @@ public class BinaryLogClientBuild implements BinaryLogClientSetter {
         if (binaryLogClient != null) {
             return binaryLogClient;
         }
-        binaryLogClient = new BinaryLogClient(hostname, port, schema, username, password);
+        if (StringUtils.isEmpty(schema)) {
+            binaryLogClient = new BinaryLogClient(hostname, port, null, username, password);
+        }else {
+            binaryLogClient = new BinaryLogClient(hostname, port, schema, username, password);
+        }
         binaryLogClient.setBlocking(blocking);
         binaryLogClient.setSSLMode(sslMode);
         binaryLogClient.setServerId(serverId);

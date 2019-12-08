@@ -2,7 +2,6 @@ package com.github.q742972035.mysql.binlog.expose.build.factory;
 
 import com.github.q742972035.mysql.binlog.expose.build.ExposeContext;
 import com.github.q742972035.mysql.binlog.expose.exception.CacheUseException;
-import com.github.q742972035.mysql.binlog.expose.build.ExposeContext;
 import com.github.q742972035.mysql.binlog.expose.build.TableElement;
 import com.github.q742972035.mysql.binlog.expose.build.factory.parse.Index;
 import com.github.q742972035.mysql.binlog.expose.build.factory.parse.IndexParse;
@@ -10,7 +9,6 @@ import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConn
 import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Columns;
-import com.github.q742972035.mysql.binlog.expose.exception.CacheUseException;
 import com.github.q742972035.mysql.binlog.expose.utils.CacheUtils;
 import com.mysql.cj.MysqlType;
 
@@ -36,7 +34,7 @@ public class TableElementFactory {
 
     static {
         try {
-            EXCUTE_METHOD = DefaultConnectionHandler.class.getMethod("excute", String.class, Class.class);
+            EXCUTE_METHOD = DefaultConnectionHandler.class.getMethod("execute", String.class, Class.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

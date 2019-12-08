@@ -1,5 +1,9 @@
 package com.github.q742972035.mysql.binlog.expose.build;
 
+import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConnectionHandler;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Variables;
 import com.github.q742972035.mysql.binlog.expose.event.DefaultFailureEventListener;
 import com.github.q742972035.mysql.binlog.expose.utils.ReflectionUtils;
 import com.github.q742972035.mysql.binlog.expose.event.DefaultBinaryLogEventListener;
@@ -8,9 +12,13 @@ import com.github.q742972035.mysql.binlog.expose.event.DefaultFailureEventListen
 import com.github.q742972035.mysql.binlog.expose.event.type.FailureType;
 import com.github.q742972035.mysql.binlog.expose.utils.ReflectionUtils;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * 封装了mysql-binlog的总输出
@@ -21,6 +29,7 @@ import java.lang.reflect.Field;
  * @create: 2019-08-02 15:55
  **/
 public class Expose {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     private ExposeConfig exposeConfig;
     private DefaultBinaryLogEventListener binaryLogEventListener;
     private DefaultConnectionEventListener connectionEventListener;
@@ -58,6 +67,9 @@ public class Expose {
 
 
     public void connect() throws IOException {
+        if (!checkVariables("binlog_format","row")){
+            throw new IllegalStateException("请检测mysql的binlog属性，其中binlog_format必须是row");
+        }
         this.client.registerEventListener(event -> binaryLogEventListener.onEvent(event));
         this.client.registerLifecycleListener(new BinaryLogClient.LifecycleListener() {
             @Override
@@ -81,7 +93,27 @@ public class Expose {
             }
         });
         this.client.connect();
+    }
 
+    private boolean checkVariables(String key,String value){
+        DefaultConnectionHandler connectionHandler = new DefaultConnectionHandler(ExposeContext.getConfig());
+        try {
+            List<Variables> variablesList = connectionHandler.execute(SqlAcquire.getSql(SqlFormat.VARIABLES_SQL, key), Variables.class);
+            variablesList = Optional.of(variablesList).orElseThrow(()->new IllegalStateException("variables 不可以为null"));
+            if (variablesList.isEmpty()){
+                throw new IllegalStateException("无法查询属性key:"+key);
+            }
+            Variables variables = variablesList.get(0);
+            if (value.equalsIgnoreCase(variables.getValue())){
+                return true;
+            }
+        }catch (Exception e){
+            if (logger.isErrorEnabled()){
+                logger.error("",e);
+            }
+            return false;
+        }
+        return false;
     }
 
     public void disconnect() throws IOException {

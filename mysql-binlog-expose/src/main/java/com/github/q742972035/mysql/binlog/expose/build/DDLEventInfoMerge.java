@@ -6,12 +6,6 @@ import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Columns;
 import com.github.q742972035.mysql.binlog.expose.utils.CacheUtils;
-import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConnectionHandler;
-import com.github.q742972035.mysql.binlog.expose.build.mysql.parse.SqlParse;
-import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
-import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
-import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Columns;
-import com.github.q742972035.mysql.binlog.expose.utils.CacheUtils;
 import com.github.shyiko.mysql.binlog.event.QueryEventData;
 
 import java.lang.reflect.Method;
@@ -28,7 +22,7 @@ public class DDLEventInfoMerge extends BaseEventInfoMerge {
 
     static {
         try {
-            EXCUTE_METHOD = DefaultConnectionHandler.class.getMethod("excute", String.class, Class.class);
+            EXCUTE_METHOD = DefaultConnectionHandler.class.getMethod("execute", String.class, Class.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

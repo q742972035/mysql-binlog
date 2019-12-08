@@ -25,7 +25,7 @@ public class DefaultConnectionHandler {
         this.exposeConfig = exposeConfig;
     }
 
-    public <T> List<T> excute(String sql, Class<T> type) {
+    public <T> List<T> execute(String sql, Class<T> type) {
         Connection connection = null;
         try {
             connection = exposeConfig.getDataSource().getConnection();

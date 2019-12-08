@@ -6,6 +6,7 @@ import com.github.q742972035.mysql.binlog.expose.build.mysql.hanlder.DefaultConn
 import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlAcquire;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.sql.SqlFormat;
 import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Columns;
+import com.github.q742972035.mysql.binlog.expose.build.mysql.table.Variables;
 import com.github.q742972035.mysql.binlog.expose.utils.StreamUtils;
 import com.mysql.cj.MysqlType;
 import org.junit.Before;
@@ -80,7 +81,7 @@ public class DefaultConnectionHandlerTest {
         execute(Arrays.asList(createDbSql,useDb,dropTb,createTb),dataSource);
 
 
-        List<Columns> list = connectionHandler.excute(SqlAcquire.getSql(SqlFormat.COLUMN_SQL, "t_move", "test_binlog_mysiam"), Columns.class);
+        List<Columns> list = connectionHandler.execute(SqlAcquire.getSql(SqlFormat.COLUMN_SQL, "t_move", "test_binlog_mysiam"), Columns.class);
 
 
         assertThat(list.size()).isEqualTo(6);
@@ -100,5 +101,13 @@ public class DefaultConnectionHandlerTest {
 
 
 
+    }
+
+    @Test
+    public void testVariables(){
+        ExposeConfig config = new ExposeConfig();
+        config.setDataSource(dataSource);
+        DefaultConnectionHandler connectionHandler = new DefaultConnectionHandler(config);
+        List<Variables> list = connectionHandler.execute(SqlAcquire.getSql(SqlFormat.VARIABLES_SQL, "binlog_format"), Variables.class);
     }
 }

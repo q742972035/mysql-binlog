@@ -21,7 +21,6 @@ import utils.BasePropertiesUtils;
 import javax.sql.DataSource;
 import java.io.*;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
@@ -53,6 +52,25 @@ public class ExposeTest extends AbstractTest {
         dataSource.setUrl(BasePropertiesUtils.getKey("jdbc.url"));
         dataSource.setUsername(BasePropertiesUtils.getKey("jdbc.username"));
         dataSource.setPassword(BasePropertiesUtils.getKey("jdbc.password"));
+    }
+
+
+    @Test
+    public void testSimpleStart() throws InterruptedException, IOException {
+        ExposeConfig config = new ExposeConfig();
+        config.setDataSource(dataSource);
+        BinaryLogClientBuild build = new BinaryLogClientBuild();
+        build.setBlocking(true)
+                .setHostname(BasePropertiesUtils.getKey("jdbc.host"))
+                .setUsername(BasePropertiesUtils.getKey("jdbc.username"))
+                .setPassword(BasePropertiesUtils.getKey("jdbc.password"))
+                .setSchema("");
+        Expose expose = new Expose(config).build(build);
+        expose.connect();
+
+        synchronized (this){
+            wait();
+        }
     }
 
 
@@ -475,7 +493,7 @@ public class ExposeTest extends AbstractTest {
         for (int i = 0; i < loopTime; i++) {
             execute(Arrays.asList(insertSql),dataSource);
             Thread.sleep(1000);
-            binLogs.add(connectionHandler.excute("SHOW MASTER STATUS", BinLog.class).get(0));
+            binLogs.add(connectionHandler.execute("SHOW MASTER STATUS", BinLog.class).get(0));
         }
 
         adapter.getExpose().disconnect();
