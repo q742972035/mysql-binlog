@@ -13,14 +13,15 @@
 <dependency>
     <groupId>com.github.q742972035.mysql.binlog</groupId>
     <artifactId>dispatch</artifactId>
-    <version>0.0.0.2-SNAPSHOTS</version>
+    <version>0.0.0.3-SNAPSHOTS</version>
 </dependency>
 ```
 **（仓库地址为maven中央仓库）**
 
 ---
 ## 历史版本
-暂无
+1. 0.0.0.2-SNAPSHOTS > 0.0.0.3-SNAPSHOTS添加的功能
+> 修复依赖tools时版本错误的问题
 
 ---
 ## SQL准备
