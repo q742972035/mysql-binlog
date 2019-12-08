@@ -13,7 +13,7 @@
 <dependency>
     <groupId>com.github.q742972035.mysql.binlog</groupId>
     <artifactId>expose</artifactId>
-    <version>0.0.0.1-SNAPSHOTS</version>
+    <version>0.0.0.3-SNAPSHOTS</version>
 </dependency>
 ```
 **（仓库地址为maven中央仓库）**
@@ -26,6 +26,11 @@
     public static final ThreadLocal<Long> CURRENT_POSITION = new ThreadLocal<>();
     public static final ThreadLocal<Long> NEXT_POSITION = new ThreadLocal<>();
 ```
+2. 0.0.0.1-SNAPSHOTS > 0.0.0.2-SNAPSHOTS添加的功能
+> 修改pom.xml的依赖
+3. 0.0.0.2-SNAPSHOTS > 0.0.0.3-SNAPSHOTS添加的功能
+> 纠结DefaultConnectionHandler类的方法名字错误，(excute改成execute)<br>
+> 初始化检测binlog_format是否为ROW
 
 
 ---
